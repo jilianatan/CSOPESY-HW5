@@ -1,8 +1,9 @@
 #include "Marquee.h"
 
-MarqueeConsole::MarqueeConsole(const String& title) : name(title) { // Initialize name in initializer list
-    consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);  // Get handle for the console
-    GetConsoleScreenBufferInfo(consoleHandle, &screenBufferInfo);  // Retrieve initial buffer info
+MarqueeConsole::MarqueeConsole(const String& title) : name(title) {
+    consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    GetConsoleScreenBufferInfo(consoleHandle, &screenBufferInfo);
+    currentY = screenHeight / 2; // Start the marquee in the middle of the screen
 }
 
 MarqueeConsole::~MarqueeConsole() {
@@ -67,10 +68,15 @@ void MarqueeConsole::updateInput(bool useThread) {
 
 void MarqueeConsole::updateMarquee() {
     currentX += xSpeed;
+    currentY += ySpeed;
 
     // Change direction when hitting the screen boundaries
     if (currentX <= 0 || currentX >= screenWidth - textSize - 1) {
         xSpeed *= -1;
+    }
+
+    if (currentY <= 0 || currentY >= screenHeight - 1) {
+        ySpeed *= -1;
     }
 }
 
