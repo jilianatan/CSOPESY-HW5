@@ -25,8 +25,8 @@ public:
     bool isRunning() const { return running; } // Getter for isRunning
 
 private:
-    static const int UPDATE_INTERVAL = 50;
-    static const int INPUT_DELAY = 10;
+    static const int UPDATE_INTERVAL = 50; // Refresh interval for rendering (milliseconds)
+    static const int INPUT_DELAY = 20; // Polling interval for keyboard input (milliseconds)
 
     HANDLE consoleHandle;  // Handle to the console window
     CONSOLE_SCREEN_BUFFER_INFO screenBufferInfo;  // To get buffer info
