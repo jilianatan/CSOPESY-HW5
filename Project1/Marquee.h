@@ -48,12 +48,12 @@ private:
 
     bool isCursorVisible = true;
     std::thread cursorThread;
-    bool running = false; // Changed from private to public via getter
+    bool running = false; 
 
     void drawHeader();
     void drawMarquee();
     void drawInput();
     void toggleCursorBlink();
     void showCommandHistory();
-    String name; // Added the name variable back
+    String name; 
 };
