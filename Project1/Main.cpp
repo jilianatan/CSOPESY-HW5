@@ -1,6 +1,6 @@
 #include "Marquee.h"
 
-const bool USE_THREADS = false;
+const bool USE_THREADS = true; // set to false for non-threaded
 
 int main() {
     auto marquee = std::make_shared<MarqueeConsole>("MARQUEE_CONSOLE");
